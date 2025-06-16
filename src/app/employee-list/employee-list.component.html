@@ -1,0 +1,36 @@
+<h2>Employee List</h2>
+<div
+  *ngIf="employees.length > 0; else loading"
+  style="display: flex; flex-wrap: wrap; background-color: #cbbba6"
+>
+  <div
+    *ngFor="let emp of employees"
+    style="
+      margin: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      background-color: #28282b;
+      border-radius: 20px;
+      width: 400px;
+    "
+  >
+    <img
+      [src]="emp.picture.large"
+      alt="avatar"
+      style="width: 80px; border-radius: 50%; margin-right: 10px"
+    />
+
+    <div>
+      <h4>{{ emp?.name?.first }} {{ emp?.name?.last }}</h4>
+      <p>Gender: {{ emp?.gender }}</p>
+      <p>Age: {{ emp?.dob?.age }}</p>
+      <p>Location: {{ emp?.location?.country }}</p>
+
+      <p>Email: {{ emp?.email }}</p>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <h1 style="color: black; text-align: center; margin-top: 250px;">Loading employees...</h1>
+</ng-template>
